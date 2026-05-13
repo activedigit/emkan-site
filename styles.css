@@ -456,6 +456,16 @@ button {
     background: linear-gradient(135deg, rgba(10, 37, 64, 0.2) 0%, rgba(20, 184, 166, 0.15) 100%);
 }
 
+.hero-talk-label {
+    margin-top: 24px;
+    text-align: center;
+    font-size: 22px;
+    font-weight: 700;
+    color: #1a4480;
+    letter-spacing: 0.5px;
+    direction: rtl;
+}
+
 .hero-overlay-card {
     position: absolute;
     background: white;
