@@ -177,47 +177,55 @@ button {
 }
 
 .logo {
-    display: flex;
+    display: inline-flex;
+    flex-direction: column;
     align-items: center;
-    gap: 6px;
+    justify-content: center;
+    gap: 4px;
     position: relative;
     transition: var(--transition);
+    text-decoration: none;
 }
 
 .logo:hover {
-    transform: scale(1.04);
-}
-
-.logo-img {
-    height: 56px;
-    width: 56px;
-    display: block;
-    object-fit: contain;
-    border-radius: 12px;
-    flex-shrink: 0;
+    transform: translateY(-2px);
 }
 
 .logo-text {
-    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-light) 100%);
+    background: linear-gradient(135deg, var(--primary) 0%, var(--turquoise) 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    font-size: 28px;
+    font-size: 30px;
     font-weight: 900;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
+    line-height: 1;
 }
 
-.logo-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--gold);
-    box-shadow: 0 0 12px rgba(212, 175, 55, 0.5);
+.logo-underline {
+    display: block;
+    width: 32px;
+    height: 3px;
+    border-radius: 100px;
+    background: linear-gradient(90deg, var(--gold) 0%, var(--gold-light) 100%);
+    box-shadow: 0 2px 8px rgba(212, 175, 55, 0.4);
 }
 
-.footer-logo-img {
-    height: 80px;
-    width: 80px;
+.footer-logo .logo-text {
+    font-size: 36px;
+}
+
+.footer-logo .logo-underline {
+    width: 38px;
+    height: 4px;
+}
+
+.footer-logo {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 16px;
 }
 
 .nav-list {
