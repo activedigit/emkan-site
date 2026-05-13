@@ -277,8 +277,8 @@ button {
    =========================== */
 .hero {
     position: relative;
-    min-height: 100vh;
-    padding: 140px 0 140px;
+    min-height: auto;
+    padding: 120px 0 100px;
     overflow: hidden;
     background: linear-gradient(135deg, #f7fafc 0%, #edf4ff 50%, #f7fafc 100%);
 }
@@ -370,14 +370,14 @@ button {
     display: flex;
     gap: 16px;
     flex-wrap: wrap;
-    margin-bottom: 56px;
+    margin-bottom: 36px;
 }
 
 .hero-stats {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 24px;
-    padding-top: 32px;
+    padding-top: 24px;
     border-top: 1px solid var(--border);
 }
 
@@ -731,7 +731,7 @@ button {
 .section-header {
     text-align: center;
     max-width: 720px;
-    margin: 0 auto 64px;
+    margin: 0 auto 40px;
 }
 
 .section-title {
@@ -753,7 +753,7 @@ button {
    Partners Strip
    =========================== */
 .partners-strip {
-    padding: 50px 0 30px;
+    padding: 32px 0 28px;
     background: white;
     overflow: hidden;
     border-bottom: 1px solid var(--border);
@@ -761,10 +761,10 @@ button {
 
 .partners-title {
     text-align: center;
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 600;
     color: var(--text-light);
-    margin-bottom: 28px;
+    margin-bottom: 18px;
     letter-spacing: 0.5px;
     text-transform: none;
 }
@@ -790,16 +790,16 @@ button {
 
 .partner-logo {
     flex-shrink: 0;
-    padding: 14px 22px;
+    padding: 8px 14px;
     background: white;
     border: 1px solid var(--border);
-    border-radius: var(--radius-md);
+    border-radius: var(--radius-sm);
     transition: var(--transition);
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 150px;
-    height: 70px;
+    width: 100px;
+    height: 44px;
 }
 
 .partner-logo img {
@@ -815,8 +815,8 @@ button {
 
 .partner-logo:hover {
     border-color: var(--primary);
-    transform: translateY(-3px);
-    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
 }
 
 .partner-logo:hover img {
@@ -828,7 +828,7 @@ button {
    How It Works
    =========================== */
 .how-it-works {
-    padding: 100px 0;
+    padding: 60px 0;
     background: linear-gradient(180deg, white 0%, #f0f7ff 100%);
     position: relative;
     overflow: hidden;
@@ -962,7 +962,7 @@ button {
    Testimonials
    =========================== */
 .testimonials {
-    padding: 100px 0;
+    padding: 60px 0;
     background: linear-gradient(180deg, #f0f7ff 0%, white 100%);
     position: relative;
     overflow: hidden;
@@ -976,8 +976,8 @@ button {
 .testimonials-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 28px;
-    margin-bottom: 48px;
+    gap: 24px;
+    margin-bottom: 32px;
 }
 
 .testimonial-card {
@@ -1082,7 +1082,7 @@ button {
    Advantages
    =========================== */
 .advantages {
-    padding: 100px 0;
+    padding: 60px 0;
     background: var(--bg-white);
 }
 
@@ -1196,7 +1196,7 @@ button {
    Services Sections
    =========================== */
 .services-section {
-    padding: 100px 0;
+    padding: 60px 0;
 }
 
 .insurance-section {
@@ -1566,7 +1566,7 @@ button {
    =========================== */
 .trust-banner {
     position: relative;
-    padding: 120px 0;
+    padding: 70px 0;
     overflow: hidden;
     color: white;
     isolation: isolate;
@@ -1612,10 +1612,10 @@ button {
 }
 
 .trust-text {
-    font-size: 18px;
-    line-height: 1.8;
+    font-size: 17px;
+    line-height: 1.7;
     color: rgba(255, 255, 255, 0.9);
-    margin-bottom: 48px;
+    margin-bottom: 32px;
     max-width: 640px;
     margin-left: auto;
     margin-right: auto;
@@ -1625,8 +1625,8 @@ button {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 24px;
-    margin-bottom: 48px;
-    padding: 32px 0;
+    margin-bottom: 32px;
+    padding: 24px 0;
     border-top: 1px solid rgba(255, 255, 255, 0.15);
     border-bottom: 1px solid rgba(255, 255, 255, 0.15);
 }
@@ -1650,7 +1650,7 @@ button {
    Retirement
    =========================== */
 .retirement {
-    padding: 100px 0;
+    padding: 60px 0;
     background: linear-gradient(180deg, white 0%, var(--bg-light) 100%);
 }
 
@@ -1844,7 +1844,7 @@ button {
    Contact Form
    =========================== */
 .contact {
-    padding: 100px 0;
+    padding: 60px 0;
     background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
     color: white;
     position: relative;
@@ -2518,7 +2518,7 @@ button {
     }
 
     .hero {
-        padding: 120px 0 60px;
+        padding: 100px 0 50px;
         min-height: auto;
     }
 
@@ -2625,7 +2625,7 @@ button {
     .services-section,
     .retirement,
     .contact {
-        padding: 70px 0;
+        padding: 48px 0;
     }
 
     .section-header {
@@ -2654,9 +2654,12 @@ button {
     }
 
     .how-it-works,
-    .testimonials,
+    .testimonials {
+        padding: 48px 0;
+    }
+
     .partners-strip {
-        padding: 60px 0;
+        padding: 24px 0 20px;
     }
 
     .partner-logo {
