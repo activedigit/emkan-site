@@ -376,4 +376,116 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ---------- Initial active link ----------
     updateActiveLink();
+
+    // ---------- Accessibility Widget ----------
+    const a11yToggle = document.getElementById('a11yToggle');
+    const a11yPanel = document.getElementById('a11yPanel');
+    const a11yClose = document.getElementById('a11yClose');
+    const a11yOptions = document.querySelectorAll('.a11y-option');
+
+    if (a11yToggle && a11yPanel) {
+        const STORAGE_KEY = 'emkan-a11y-settings';
+
+        const state = {
+            toggles: { contrast: false, dark: false, links: false, readable: false, pause: false, cursor: false },
+            fontStep: 0
+        };
+
+        const loadState = () => {
+            try {
+                const saved = localStorage.getItem(STORAGE_KEY);
+                if (saved) Object.assign(state, JSON.parse(saved));
+            } catch (e) { /* ignore */ }
+        };
+
+        const saveState = () => {
+            try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch (e) { /* ignore */ }
+        };
+
+        const applyState = () => {
+            const body = document.body;
+            // Apply boolean toggles
+            Object.entries(state.toggles).forEach(([key, value]) => {
+                body.classList.toggle('a11y-' + key, value);
+            });
+            // Clear all font classes
+            body.classList.forEach(c => {
+                if (c.startsWith('a11y-font-') || c.startsWith('a11y-font--')) {
+                    body.classList.remove(c);
+                }
+            });
+            // Apply font step
+            if (state.fontStep !== 0) {
+                const cls = state.fontStep > 0 ? 'a11y-font-' + state.fontStep : 'a11y-font-' + state.fontStep;
+                body.classList.add(cls);
+            }
+            // Update button states
+            a11yOptions.forEach(btn => {
+                const action = btn.dataset.action;
+                if (action in state.toggles) {
+                    btn.classList.toggle('active', state.toggles[action]);
+                    btn.setAttribute('aria-pressed', state.toggles[action]);
+                }
+            });
+        };
+
+        const togglePanel = (open) => {
+            const isOpen = open !== undefined ? open : a11yPanel.hidden;
+            a11yPanel.hidden = !isOpen;
+            a11yToggle.setAttribute('aria-expanded', isOpen);
+            if (isOpen) {
+                a11yClose.focus();
+            }
+        };
+
+        a11yToggle.addEventListener('click', () => togglePanel());
+        a11yClose.addEventListener('click', () => {
+            togglePanel(false);
+            a11yToggle.focus();
+        });
+
+        // Click outside to close
+        document.addEventListener('click', (e) => {
+            if (!a11yPanel.hidden &&
+                !a11yPanel.contains(e.target) &&
+                !a11yToggle.contains(e.target)) {
+                togglePanel(false);
+            }
+        });
+
+        // Escape to close
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !a11yPanel.hidden) {
+                togglePanel(false);
+                a11yToggle.focus();
+            }
+        });
+
+        a11yOptions.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const action = btn.dataset.action;
+
+                if (action === 'font-bigger') {
+                    state.fontStep = Math.min(state.fontStep + 1, 4);
+                } else if (action === 'font-smaller') {
+                    state.fontStep = Math.max(state.fontStep - 1, -2);
+                } else if (action === 'reset') {
+                    state.toggles = { contrast: false, dark: false, links: false, readable: false, pause: false, cursor: false };
+                    state.fontStep = 0;
+                } else if (action in state.toggles) {
+                    // Mutually exclusive: contrast vs dark
+                    if (action === 'contrast' && !state.toggles.contrast) state.toggles.dark = false;
+                    if (action === 'dark' && !state.toggles.dark) state.toggles.contrast = false;
+                    state.toggles[action] = !state.toggles[action];
+                }
+
+                applyState();
+                saveState();
+            });
+        });
+
+        // Initialize
+        loadState();
+        applyState();
+    }
 });
